@@ -1,0 +1,12 @@
+#!/bin/bash
+# run "$@" within a Xvfb DISPLAY
+export DISPLAY=:9
+Xvfb $DISPLAY -screen 0 1024x768x24 &
+PID=$!
+sleep 1
+
+"$@"
+RET=$?
+
+kill $PID
+exit $RET
