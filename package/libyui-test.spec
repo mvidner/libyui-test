@@ -25,7 +25,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libyui-devel
 BuildRequires:  libyui-qt
 BuildRequires:  make
-BuildRequires:  strace
 BuildRequires:  xorg-x11-server
 
 Url:            http://github.com/libyui/
@@ -41,7 +40,7 @@ Automatic tests for libyui.
 
 %build
 
-strace -s999 -f make check
+make check
 
 %install
 
