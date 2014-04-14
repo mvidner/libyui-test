@@ -5,9 +5,10 @@ CXXFLAGS = -g3 -Wall
 
 # libyui:
 CPPFLAGS = -I/usr/include/yui
-LDFLAGS  = -lyui
+LOADLIBES= -lyui
 
-check: $(TESTS)
+all:   $(TESTS)
+check: all
 	set -x; for i in $(TESTS); do ./$$i; done
 
 clean:
@@ -19,3 +20,5 @@ SOURCES = $(patsubst %,%.cc,$(TESTS))
 
 dist:
 	tar cvj --transform 's,^,$(PACKAGE)-$(VERSION)/,' -f package/$(PACKAGE)-$(VERSION).tar.bz2 $(SOURCES) Makefile
+
+.PHONY: all check clean dist
