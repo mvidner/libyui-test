@@ -17,7 +17,7 @@ clean:
 	rm -f $(TESTS) *.o
 
 PACKAGE = libyui-test
-VERSION = 1.0.0
+VERSION := $(shell sed -n 's/Version: *//;T;p;q' package/*.spec)
 SOURCES = $(patsubst %,%.cc,$(TESTS))
 
 dist:
