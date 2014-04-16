@@ -1,4 +1,5 @@
 TESTS = \
+  test_dialog_cleanup \
   test_library_shutdown
 SCRIPTS = \
   virtual_x_server
