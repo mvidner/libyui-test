@@ -43,7 +43,7 @@ Automatic tests for libyui.
 
 %build
 
-make check
+make check CXXFLAGS="$RPM_OPT_FLAGS"
 
 %install
 
