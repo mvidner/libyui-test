@@ -7,7 +7,8 @@ TERM_FOR_gtk=./virtual_x_server
 
 # test all UIs even if one of them fails
 FAIL=false
-for UI in ncurses qt gtk; do
+# for UI in ncurses qt gtk; do
+for UI in ncurses qt; do
     TERM_FOR_UI=TERM_FOR_$UI
     ${!TERM_FOR_UI} "./test_$UI $* 2> $UI.log" || { tail $UI.log; FAIL=true; }
 done
