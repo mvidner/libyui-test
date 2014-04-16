@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 16 13:31:44 UTC 2014 - mvidner@suse.com
+
+- dialog_cleanup_test: do destroy manually (help ncurses)
+- 1.0.4
+
+-------------------------------------------------------------------
 Wed Apr 16 12:48:20 UTC 2014 - mvidner@suse.com
 
 - use screen to run ncurses in OBS

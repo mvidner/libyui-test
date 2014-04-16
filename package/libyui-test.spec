@@ -17,7 +17,7 @@
 
 
 Name:           libyui-test
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Source:         libyui-test-%{version}.tar.bz2
 
