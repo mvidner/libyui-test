@@ -23,7 +23,7 @@ check: all
 	LD_LIBRARY_PATH=$(LIBDIR) ./test_all $(TESTS)
 
 clean:
-	rm -f $(TESTS) *.o
+	rm -f $(TESTS) *.o *.log
 
 PACKAGE = libyui-test
 VERSION := $(shell sed -n 's/Version: *//;T;p;q' package/*.spec)

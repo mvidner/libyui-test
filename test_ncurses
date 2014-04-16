@@ -1,5 +1,7 @@
 #!/bin/bash
 set -x
+set -eu
 for i in "$@"; do
-    ./$i --ncurses
+    # on error, recover from a mangled terminal
+    ./$i --ncurses || { reset 2>&1 ; false; }
 done

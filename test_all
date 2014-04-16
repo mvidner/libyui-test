@@ -1,5 +1,12 @@
 #!/bin/bash
 set -x
-./test_ncurses "$@"
-./virtual_x_server ./test_qt "$@"
-./virtual_x_server ./test_gtk "$@"
+set -u
+X=./virtual_x_server
+
+# test all UIs even if one of them fails
+FAIL=false
+   ./test_ncurses "$@" 2> ncurses.log || FAIL=true
+$X ./test_qt      "$@" 2> qt.log      || FAIL=true
+$X ./test_gtk     "$@" 2> gtk.log     || FAIL=true
+
+! $FAIL

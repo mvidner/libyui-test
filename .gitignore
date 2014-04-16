@@ -1,3 +1,4 @@
+*.log
 package/_build*
 package/*.tar.bz2
 *_test
