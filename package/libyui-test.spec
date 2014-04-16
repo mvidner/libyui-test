@@ -27,6 +27,7 @@ BuildRequires:  libyui-gtk
 BuildRequires:  libyui-ncurses
 BuildRequires:  libyui-qt
 BuildRequires:  make
+BuildRequires:  screen
 BuildRequires:  xorg-x11-server
 
 Url:            http://github.com/libyui/

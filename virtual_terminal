@@ -1,0 +1,10 @@
+#!/bin/bash
+# run "$@" within a new terminal
+set -x
+F=`mktemp`
+TORUN=`printf "%q " "$@"`
+screen sh -c "$TORUN; echo \$? > $F"
+
+RET=`cat $F`
+rm -f $F
+exit $RET

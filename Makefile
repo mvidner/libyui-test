@@ -7,6 +7,7 @@ SCRIPTS = \
   test_ncurses \
   test_gtk \
   test_qt \
+  virtual_terminal \
   virtual_x_server
 
 CXXFLAGS = -g3 -Wall
