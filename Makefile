@@ -5,13 +5,19 @@ SCRIPTS = \
 
 CXXFLAGS = -g3 -Wall
 
+PREFIX = /usr
+LIBDIR = $(PREFIX)/$(shell rpm --eval %{_lib})
 # libyui:
-CPPFLAGS = -I/usr/include/yui
+CPPFLAGS = -I$(PREFIX)/include/yui
+LDFLAGS := -L$(LIBDIR)
 LOADLIBES= -lyui
 
 all:   $(TESTS)
 check: all
-	set -x; for i in $(TESTS); do ./virtual_x_server ./$$i; done
+	set -x; \
+	for i in $(TESTS); do \
+	  LD_LIBRARY_PATH=$(LIBDIR) ./virtual_x_server ./$$i; \
+	done
 
 clean:
 	rm -f $(TESTS) *.o
