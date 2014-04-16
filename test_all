@@ -1,13 +1,15 @@
 #!/bin/bash
 set -x
 set -u
-T=./virtual_terminal
-X=./virtual_x_server
+TERM_FOR_ncurses=./virtual_terminal
+TERM_FOR_qt=./virtual_x_server
+TERM_FOR_gtk=./virtual_x_server
 
 # test all UIs even if one of them fails
 FAIL=false
-$T "./test_ncurses $* 2> ncurses.log" || FAIL=true
-$X "./test_qt      $* 2> qt.log"      || FAIL=true
-$X "./test_gtk     $* 2> gtk.log"     || FAIL=true
+for UI in ncurses qt gtk; do
+    TERM_FOR_UI=TERM_FOR_$UI
+    ${!TERM_FOR_UI} "./test_$UI $* 2> $UI.log" || { tail $UI.log; FAIL=true; }
+done
 
 ! $FAIL
