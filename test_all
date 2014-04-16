@@ -6,8 +6,8 @@ X=./virtual_x_server
 
 # test all UIs even if one of them fails
 FAIL=false
-$T ./test_ncurses "$@" 2> ncurses.log || FAIL=true
-$X ./test_qt      "$@" 2> qt.log      || FAIL=true
-$X ./test_gtk     "$@" 2> gtk.log     || FAIL=true
+$T "./test_ncurses $* 2> ncurses.log" || FAIL=true
+$X "./test_qt      $* 2> qt.log"      || FAIL=true
+$X "./test_gtk     $* 2> gtk.log"     || FAIL=true
 
 ! $FAIL

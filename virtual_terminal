@@ -1,10 +1,9 @@
 #!/bin/bash
 # run "$@" within a new terminal
 set -x
-TORUN=`printf "%q " "$@"`
 
 F=`mktemp`
-screen -D -m sh -c "$TORUN; echo \$? > $F"
+screen -D -m sh -c "$@; echo \$? > $F"
 
 RET=`cat $F`
 rm -f $F

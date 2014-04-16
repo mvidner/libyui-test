@@ -6,7 +6,7 @@ Xvfb $DISPLAY -screen 0 1024x768x24 2> xvfb.log &
 PID=$!
 sleep 1
 
-"$@"
+eval "$@"
 RET=$?
 
 kill $PID
