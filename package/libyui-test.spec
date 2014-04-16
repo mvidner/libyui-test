@@ -23,6 +23,8 @@ Source:         libyui-test-%{version}.tar.bz2
 
 BuildRequires:  gcc-c++
 BuildRequires:  libyui-devel
+BuildRequires:  libyui-gtk
+BuildRequires:  libyui-ncurses
 BuildRequires:  libyui-qt
 BuildRequires:  make
 BuildRequires:  xorg-x11-server

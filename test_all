@@ -1,0 +1,5 @@
+#!/bin/bash
+set -x
+./test_ncurses "$@"
+./virtual_x_server ./test_qt "$@"
+./virtual_x_server ./test_gtk "$@"

@@ -3,6 +3,10 @@ TESTS = \
   library_shutdown_test
 
 SCRIPTS = \
+  test_all \
+  test_ncurses \
+  test_gtk \
+  test_qt \
   virtual_x_server
 
 CXXFLAGS = -g3 -Wall
@@ -16,10 +20,7 @@ LOADLIBES= -lyui
 
 all:   $(TESTS)
 check: all
-	set -x; \
-	for i in $(TESTS); do \
-	  LD_LIBRARY_PATH=$(LIBDIR) ./virtual_x_server ./$$i; \
-	done
+	LD_LIBRARY_PATH=$(LIBDIR) ./test_all $(TESTS)
 
 clean:
 	rm -f $(TESTS) *.o
