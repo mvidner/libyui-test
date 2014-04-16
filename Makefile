@@ -1,6 +1,7 @@
 TESTS = \
-  test_dialog_cleanup \
-  test_library_shutdown
+  dialog_cleanup_test \
+  library_shutdown_test
+
 SCRIPTS = \
   virtual_x_server
 

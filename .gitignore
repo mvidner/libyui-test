@@ -1,4 +1,3 @@
 package/_build*
 package/*.tar.bz2
-test_*
-!test_*.cc
+*_test
