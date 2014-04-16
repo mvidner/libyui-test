@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 16 13:55:55 UTC 2014 - mvidner@suse.com
+
+- disable GTK for now
+- 1.0.5
+
+-------------------------------------------------------------------
 Wed Apr 16 13:31:44 UTC 2014 - mvidner@suse.com
 
 - dialog_cleanup_test: do destroy manually (help ncurses)
