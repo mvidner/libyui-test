@@ -4,7 +4,7 @@ set -x
 TORUN=`printf "%q " "$@"`
 
 F=`mktemp`
-tmux -c "$TORUN; echo \$? > $F"
+screen -d -m sh -c "$TORUN; echo \$? > $F"
 
 RET=`cat $F`
 rm -f $F
