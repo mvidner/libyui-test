@@ -16,18 +16,15 @@
 #
 
 
-Name:           libyui-test
+Name:           libyui-test-qt
 Version:        1.0.5
 Release:        0
 Source:         libyui-test-%{version}.tar.bz2
 
 BuildRequires:  gcc-c++
 BuildRequires:  libyui-devel
-# BuildRequires:  libyui-gtk
-BuildRequires:  libyui-ncurses
 BuildRequires:  libyui-qt
 BuildRequires:  make
-BuildRequires:  screen
 BuildRequires:  xorg-x11-server
 
 Url:            http://github.com/libyui/
@@ -43,7 +40,7 @@ Automatic tests for libyui.
 
 %build
 
-make check CXXFLAGS="$RPM_OPT_FLAGS"
+make check CXXFLAGS="$RPM_OPT_FLAGS" TARGETS=qt
 
 %install
 

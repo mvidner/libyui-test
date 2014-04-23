@@ -20,9 +20,11 @@ CPPFLAGS = -I$(PREFIX)/include/yui
 LDFLAGS = -L$(LIBDIR)
 LOADLIBES= -lyui
 
+TARGETS = ncurses qt gtk
+
 all:   $(TESTS)
 check: all
-	LD_LIBRARY_PATH=$(LIBDIR) ./test_all $(TESTS)
+	LD_LIBRARY_PATH=$(LIBDIR) TARGETS="$(TARGETS)" ./test_all $(TESTS)
 
 clean:
 	rm -f $(TESTS) *.o *.log
@@ -32,6 +34,7 @@ VERSION = $(shell sed -n 's/Version: *//;T;p;q' package/*.spec)
 SOURCES = $(patsubst %,%.cc,$(TESTS))
 
 dist:
+	-rm package/*.tar.bz2
 	VERSION=$(VERSION); tar cvj \
           --transform "s,^,$(PACKAGE)-$$VERSION/," \
           -f package/$(PACKAGE)-$$VERSION.tar.bz2 \
