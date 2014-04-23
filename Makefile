@@ -30,14 +30,15 @@ clean:
 	rm -f $(TESTS) *.o *.log
 
 PACKAGE = libyui-test
-VERSION = $(shell sed -n 's/Version: *//;T;p;q' package/*.spec)
+VERSION = 1.0.6
 SOURCES = $(patsubst %,%.cc,$(TESTS))
 
 dist:
 	-rm package/*.tar.bz2
-	VERSION=$(VERSION); tar cvj \
-          --transform "s,^,$(PACKAGE)-$$VERSION/," \
-          -f package/$(PACKAGE)-$$VERSION.tar.bz2 \
+	sed -i -e 's/^\(Version: *\).*/\1$(VERSION)/' package/*.spec
+	tar cvj \
+          --transform "s,^,$(PACKAGE)-$(VERSION)/," \
+          -f package/$(PACKAGE)-$(VERSION).tar.bz2 \
           $(SOURCES) $(SCRIPTS) Makefile
 
 .PHONY: all check clean dist
