@@ -15,11 +15,14 @@
 
 #include <unistd.h>
 #include <YUI.h>
+#include <YUILoader.h>
 #include <YDialog.h>
 #include <YWidgetFactory.h>
 
 int main( int argc, char **argv )
 {
+    bool with_threads = true;
+    YUILoader::loadUI(with_threads);
     // Initialize the UI
     YWidgetFactory * wf = YUI::widgetFactory();
 
