@@ -1,0 +1,42 @@
+#!/usr/bin/expect --
+
+spawn ./input_field_test --ncurses
+sleep 1
+
+# enlarge your input buffer now! satisfaction guaranteed! give us your $$$
+match_max 100000
+
+set timeout 15
+expect_after {
+    default {
+        puts "OOPS"
+        puts "last matched <<$expect_out(buffer)>>"
+        exit 1
+    }
+}
+
+set bsp "\177"
+set esc "\033"
+set del "${esc}\[3~"
+set up    "${esc}OA"
+set down  "${esc}OB"
+set right "${esc}OC"
+set left  "${esc}OD"
+set home "${esc}OH"
+set end  "${esc}OF"
+
+expect "L*abel"
+
+# Hi
+send "Hi"
+# Hello
+send "${bsp}ello"
+# Help
+send "${left}${left}${del}${del}p"
+# Send Help
+send "${home}Send ${end}"
+# Send Help Quick
+send " Quick"
+# &OK
+send "${esc}o"
+interact

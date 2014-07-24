@@ -13,6 +13,7 @@
 
 TESTS = \
   dialog_cleanup_test \
+  input_field_test \
   library_shutdown_test
 
 SCRIPTS = \
