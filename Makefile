@@ -11,11 +11,22 @@
 # to the Free Software Foundation, Inc., 51 Franklin Street, Fifth
 # Floor, Boston, MA 02110-1301 USA
 
+# This Makefile offers an interface like automake without using it.
+
 TESTS = \
   dialog_cleanup_test \
   library_shutdown_test
 
+TESTS_NCURSES = \
+  input_field_test.exp
+
+PROGRAMS = \
+  dialog_cleanup_test \
+  input_field_test \
+  library_shutdown_test
+
 SCRIPTS = \
+  input_field_test.exp \
   test_all \
   test_ncurses \
   test_gtk \
@@ -35,16 +46,19 @@ LOADLIBES= -lyui
 
 TARGETS = ncurses qt gtk
 
-all:   $(TESTS)
+all:   $(PROGRAMS)
 check: all
 	LD_LIBRARY_PATH=$(LIBDIR) TARGETS="$(TARGETS)" ./test_all $(TESTS)
+ifneq (,$findstring(ncurses,$(TARGETS)))
+	LD_LIBRARY_PATH=$(LIBDIR) TARGETS="ncurses"    ./test_all $(TESTS_NCURSES)
+endif
 
 clean:
-	rm -f $(TESTS) *.o *.log
+	rm -f $(PROGRAMS) *.o *.log
 
 PACKAGE = libyui-test
 VERSION = 1.0.6
-SOURCES = $(patsubst %,%.cc,$(TESTS))
+SOURCES = $(patsubst %,%.cc,$(PROGRAMS))
 
 dist:
 	-rm package/*.tar.bz2

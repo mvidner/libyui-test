@@ -9,7 +9,7 @@ The requirements depend on what backends you want tested:
 
     sudo zypper install gcc-c++ make libyui-devel           # 1
     sudo zypper install libyui-gtk libyui-ncurses libyui-qt # 2
-    sudo zypper install screen                              # 3
+    sudo zypper install screen expect                       # 3
     sudo zypper install xorg-x11-server                     # 4
 
 1. In any case
