@@ -13,6 +13,7 @@
   Floor, Boston, MA 02110-1301 USA
 */
 
+#include <unistd.h>
 #include <YUI.h>
 #include <YDialog.h>
 #include <YWidgetFactory.h>
@@ -23,6 +24,8 @@ int main( int argc, char **argv )
     YWidgetFactory * wf = YUI::widgetFactory();
 
     YDialog * d1 = wf->createPopupDialog();
+    wf->createLabel(d1, "Hello, World!");
+    d1->waitForEvent(10 /*msec*/);
     d1->destroy();
     return 0;
 }
