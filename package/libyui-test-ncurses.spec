@@ -26,6 +26,7 @@ BuildRequires:  libyui-devel
 BuildRequires:  libyui-ncurses
 BuildRequires:  make
 BuildRequires:  screen
+BuildRequires:  expect
 
 Url:            http://github.com/libyui/
 Summary:        GUI-abstraction library

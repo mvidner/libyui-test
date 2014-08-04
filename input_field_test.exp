@@ -1,4 +1,17 @@
 #!/usr/bin/expect --
+#
+# Copyright (C) 2014 SUSE LLC
+# This library is free software; you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as
+# published by the Free Software Foundation; either version 2.1 of the
+# License, or (at your option) version 3.0 of the License. This library
+# is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+# License for more details. You should have received a copy of the GNU
+# Lesser General Public License along with this library; if not, write
+# to the Free Software Foundation, Inc., 51 Franklin Street, Fifth
+# Floor, Boston, MA 02110-1301 USA
 
 spawn ./input_field_test --ncurses
 sleep 1
@@ -15,6 +28,9 @@ expect_after {
     }
 }
 
+# The test needs the screen virtual terminal.
+# man 1 screen
+# Maybe it can be made to work without it but why bother.
 set bsp "\177"
 set esc "\033"
 set del "${esc}\[3~"
@@ -22,8 +38,8 @@ set up    "${esc}OA"
 set down  "${esc}OB"
 set right "${esc}OC"
 set left  "${esc}OD"
-set home "${esc}OH"
-set end  "${esc}OF"
+set home "${esc}\[1~"
+set end  "${esc}\[4~"
 
 expect "L*abel"
 
@@ -40,3 +56,19 @@ send " Quick"
 # &OK
 send "${esc}o"
 interact
+
+set expected "Send Help Quick\n"
+
+# This comparison thing should be factored out.
+# Tcl programming should be kept to a minimum.
+set f [open output.txt]
+set actual [read $f]
+close $f
+
+if { $actual == $expected } {
+  puts stderr "OK"
+} else {
+  puts stderr "Actual '$actual' expected '$expected'"
+  puts stderr "FAIL"
+  exit 1
+}

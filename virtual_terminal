@@ -2,7 +2,10 @@
 # run "$@" within a new terminal
 set -x
 
+# We need the exit code of "$@", but screen eats that. Use a temporary file.
 F=`mktemp`
+# -D -m   This also starts screen in "detached" mode, but doesn't fork
+#         a new process. The command exits if the session terminates.
 screen -D -m sh -c "$@; echo \$? > $F"
 
 RET=`cat $F`
