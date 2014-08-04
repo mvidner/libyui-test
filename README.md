@@ -31,7 +31,7 @@ that runs the above with the newest packages. For example the job
 uses:
 
     export LANG=en_US.UTF-8
-    PACKAGE=libyui-test-qt rake osc:build
+    rake osc:build[libyui-test-qt.spec]
 
 Design
 ------

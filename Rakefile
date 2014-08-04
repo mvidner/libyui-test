@@ -20,9 +20,7 @@ Packaging.configuration do |conf|
     conf.obs_project    = "devel:libraries:libyui"
     conf.obs_sr_project = "openSUSE:Factory"
   end
-  # Used by osc:* tasks
-  # One of libyui-test-{ncurses,qt,gtk}
-  conf.package_name = ENV["PACKAGE"]
+  conf.package_name = "libyui-test"
   conf.version      = `sed -n 's/VERSION = //;T;p;q' Makefile`.chomp
 end
 
