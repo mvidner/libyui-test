@@ -35,3 +35,21 @@ desc 'Build a tarball for OBS'
 task :tarball do
   sh "make dist"
 end
+
+desc "Increase the last part of version in Makefile, package/*.spec files"
+task "version:bump" do
+  rx = /^
+    (
+      VERSION \s* [:=] \s*      # 'VERSION='   or 'Version :'
+      (?:(?:\d+\.)+)            # '1.' or '11.11.' or '11.11.11.'
+    )
+    (\d+)                       # $2, the number to be bumped
+  $/ix
+  Dir.glob("package/*.spec").push("Makefile").each do |filename|
+    contents = File.read(filename)
+    contents.sub!(rx) do
+      "#{$1}#{$2.to_i + 1}"
+    end
+    File.write(filename, contents)
+  end
+end

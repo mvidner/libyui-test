@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  4 13:38:44 UTC 2014 - mvidner@suse.com
+
+- Added an interactive ncurses test.
+- Test a Qt crash caused by improper threading (bnc#879295).
+- 1.0.7
+
+-------------------------------------------------------------------
 Wed Apr 23 12:57:16 UTC 2014 - mvidner@suse.com
 
 - split into 3 spec files, one for each UI

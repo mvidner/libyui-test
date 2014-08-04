@@ -17,7 +17,7 @@
 
 
 Name:           libyui-test-gtk
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Source:         libyui-test-%{version}.tar.bz2
 
