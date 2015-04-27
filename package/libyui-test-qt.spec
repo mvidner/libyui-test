@@ -40,7 +40,7 @@ Automatic tests for libyui.
 
 %build
 
-make check CXXFLAGS="$RPM_OPT_FLAGS" TARGETS=qt
+make --warn-undefined-variables check CXXFLAGS="$RPM_OPT_FLAGS" TARGETS=qt
 
 %install
 

@@ -31,7 +31,7 @@ end
 
 desc 'Build a tarball for OBS'
 task :tarball do
-  sh "make dist"
+  sh "make --warn-undefined-variables dist"
 end
 
 desc "Increase the last part of version in Makefile, package/*.spec files"
