@@ -51,7 +51,7 @@ TARGETS = ncurses qt gtk
 all:   $(PROGRAMS)
 check: all
 	LD_LIBRARY_PATH=$(LIBDIR) TARGETS="$(TARGETS)" ./test_all $(TESTS)
-ifneq (,$findstring(ncurses,$(TARGETS)))
+ifneq (,$(findstring ncurses,$(TARGETS)))
 	LD_LIBRARY_PATH=$(LIBDIR) TARGETS="ncurses"    ./test_all $(TESTS_NCURSES)
 endif
 
