@@ -15,7 +15,8 @@
 
 TESTS = \
   dialog_cleanup_test \
-  library_shutdown_test
+  library_shutdown_test \
+  tree_item_selection_test
 
 TESTS_NCURSES = \
   input_field_test.exp

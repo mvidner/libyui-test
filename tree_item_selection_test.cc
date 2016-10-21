@@ -1,6 +1,5 @@
 #include <string>
 #include <iostream>
-#include <fstream>
 #include <sstream>
 
 #include <yui/YUI.h>
@@ -13,6 +12,7 @@
 #include <yui/YPushButton.h>
 #include <yui/YEvent.h>
 
+// test for issue https://github.com/libyui/libyui/issues/86
 
 int main( int argc, char **argv )
 {
@@ -39,17 +39,7 @@ int main( int argc, char **argv )
   }
 
 
-  YPushButton* quitButton = YUI::widgetFactory()->createPushButton( vbox, "&OK" );
-  while ( true )
-  {
-    YEvent * event = dialog->waitForEvent();
-    if ( event )
-    {
-      // window manager "close window" button
-      if ( event->eventType() == YEvent::CancelEvent || event->widget() == quitButton )
-      break; // leave event loop
-    }
-  }
+  YUI::widgetFactory()->createPushButton( vbox, "&OK" );
 
   std::ostringstream res;
   for (YItem *i : tree->selectedItems())
@@ -57,8 +47,12 @@ int main( int argc, char **argv )
 
   dialog->destroy();
 
-  std::ofstream out("output.txt");
-  out << res.str() << std::endl;
+  std::string expected = "Dylan,";
+  if (res.str() != expected)
+  {
+    std::cerr << "Expected: " << expected << " Get: " << res.str() << std::endl; 
+    return 1;
+  }
 
   return 0;
 }
