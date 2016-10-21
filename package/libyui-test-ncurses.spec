@@ -17,7 +17,7 @@
 
 
 Name:           libyui-test-ncurses
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Source:         libyui-test-%{version}.tar.bz2
 
