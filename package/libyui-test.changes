@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Oct 21 12:03:34 UTC 2016 - jreidinger@suse.com
 
-- add testcase for bsc#1005889
+- add testcase for tree item selection (bsc#1005889, gh#libyui/libyui#86)
 - 1.0.8
 
 -------------------------------------------------------------------
