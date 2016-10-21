@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 21 12:03:34 UTC 2016 - jreidinger@suse.com
+
+- add testcase for tree item selection (bsc#1005889, gh#libyui/libyui#86)
+- 1.0.8
+
+-------------------------------------------------------------------
 Mon Aug  4 13:38:44 UTC 2014 - mvidner@suse.com
 
 - Added an interactive ncurses test.

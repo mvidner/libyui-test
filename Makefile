@@ -15,7 +15,8 @@
 
 TESTS = \
   dialog_cleanup_test \
-  library_shutdown_test
+  library_shutdown_test \
+  tree_item_selection_test
 
 TESTS_NCURSES = \
   input_field_test.exp
@@ -23,7 +24,8 @@ TESTS_NCURSES = \
 PROGRAMS = \
   dialog_cleanup_test \
   input_field_test \
-  library_shutdown_test
+  library_shutdown_test \
+  tree_item_selection_test
 
 SCRIPTS = \
   input_field_test.exp \
@@ -40,7 +42,7 @@ LIB64 := $(shell rpm --eval %{_lib})
 PREFIX = /usr
 LIBDIR = $(PREFIX)/$(LIB64)
 # libyui:
-CPPFLAGS = -I$(PREFIX)/include/yui
+CPPFLAGS = -I$(PREFIX)/include/yui -std=c++0x
 LDFLAGS = -L$(LIBDIR)
 LOADLIBES= -lyui
 
@@ -57,7 +59,7 @@ clean:
 	rm -f $(PROGRAMS) *.o *.log
 
 PACKAGE = libyui-test
-VERSION = 1.0.7
+VERSION = 1.0.8
 SOURCES = $(patsubst %,%.cc,$(PROGRAMS))
 
 dist:
