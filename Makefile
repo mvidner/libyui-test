@@ -58,7 +58,7 @@ clean:
 	rm -f $(PROGRAMS) *.o *.log
 
 PACKAGE = libyui-test
-VERSION = 1.0.8
+VERSION = 1.0.9
 SOURCES = $(patsubst %,%.cc,$(PROGRAMS))
 
 dist:

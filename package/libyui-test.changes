@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 25 11:51:55 UTC 2016 - mvidner@suse.com
+
+- Disable dialog_cleanup_test for now (gh#libyui/libyui-qt#41)
+- Fixed skipping the ncurses-specific tests
+- Use make --warn-undefined-variables
+- 1.0.9
+
+-------------------------------------------------------------------
 Fri Oct 21 12:03:34 UTC 2016 - jreidinger@suse.com
 
 - add testcase for tree item selection (bsc#1005889, gh#libyui/libyui#86)
