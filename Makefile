@@ -14,7 +14,6 @@
 # This Makefile offers an interface like automake without using it.
 
 TESTS = \
-  dialog_cleanup_test \
   library_shutdown_test \
   tree_item_selection_test
 
