@@ -14,7 +14,6 @@
 # This Makefile offers an interface like automake without using it.
 
 TESTS = \
-  dialog_cleanup_test \
   library_shutdown_test \
   tree_item_selection_test
 
@@ -51,7 +50,7 @@ TARGETS = ncurses qt gtk
 all:   $(PROGRAMS)
 check: all
 	LD_LIBRARY_PATH=$(LIBDIR) TARGETS="$(TARGETS)" ./test_all $(TESTS)
-ifneq (,$findstring(ncurses,$(TARGETS)))
+ifneq (,$(findstring ncurses,$(TARGETS)))
 	LD_LIBRARY_PATH=$(LIBDIR) TARGETS="ncurses"    ./test_all $(TESTS_NCURSES)
 endif
 
@@ -59,7 +58,7 @@ clean:
 	rm -f $(PROGRAMS) *.o *.log
 
 PACKAGE = libyui-test
-VERSION = 1.0.8
+VERSION = 1.0.9
 SOURCES = $(patsubst %,%.cc,$(PROGRAMS))
 
 dist:

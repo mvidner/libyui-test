@@ -17,7 +17,7 @@
 
 
 Name:           libyui-test-qt
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Source:         libyui-test-%{version}.tar.bz2
 
@@ -40,7 +40,7 @@ Automatic tests for libyui.
 
 %build
 
-make check CXXFLAGS="$RPM_OPT_FLAGS" TARGETS=qt
+make --warn-undefined-variables check CXXFLAGS="$RPM_OPT_FLAGS" TARGETS=qt
 
 %install
 
