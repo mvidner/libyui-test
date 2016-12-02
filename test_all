@@ -19,7 +19,6 @@
 # Redirects output to a log.
 # Returns false if some of the tests failed.
 
-set -x
 set -u
 TERM_FOR_ncurses=./virtual_terminal
 TERM_FOR_qt=./virtual_x_server
@@ -28,10 +27,10 @@ TERM_FOR_gtk=./virtual_x_server
 : ${TARGETS=ncurses qt gtk}
 
 # test all UIs even if one of them fails
-FAIL=false
+SUCCESS=true
 for UI in $TARGETS; do
     TERM_FOR_UI=TERM_FOR_$UI
-    ${!TERM_FOR_UI} "./test_$UI $* 2> $UI.log" || { tail $UI.log; FAIL=true; }
+    ${!TERM_FOR_UI} "./test_$UI $* 2> $UI.log" || { tail $UI.log; SUCCESS=false; }
 done
 
-! $FAIL
+$SUCCESS

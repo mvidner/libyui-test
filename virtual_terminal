@@ -1,7 +1,7 @@
 #!/bin/bash
 # run "$@" within a new terminal
-set -x
 
+set -eu
 # We need the exit code of "$@", but screen eats that. Use a temporary file.
 F=`mktemp`
 # -D -m   This also starts screen in "detached" mode, but doesn't fork

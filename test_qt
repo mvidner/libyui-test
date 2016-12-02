@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+# run a set of libyui test with the Qt frontend
 set -eu
 for i in "$@"; do
     ./$i --qt

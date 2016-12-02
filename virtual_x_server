@@ -1,8 +1,11 @@
 #!/bin/bash
 # run "$@" within a Xvfb DISPLAY
-set -x
+
+set -eu
+
 export DISPLAY=:9
-Xvfb $DISPLAY -screen 0 1024x768x24 2> xvfb.log &
+date >> xvfb.log
+Xvfb $DISPLAY -screen 0 1024x768x24 2>> xvfb.log &
 PID=$!
 sleep 1
 
